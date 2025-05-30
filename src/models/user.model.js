@@ -51,6 +51,7 @@ const userSchema = new Schema(
         timestamps: true
     }
 )
+//Pre-save Hook for Password Hashing. This is a Mongoose middleware that runs before saving a user document.
 
 userSchema.pre("save", async function (next) {
     if(!this.isModified("password")) return next();
